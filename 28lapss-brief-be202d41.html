@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28圈 – 快速了解平台用途</title>
+    <style>
+        /* 全局重置 & 基调 */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2b3a;
+            background: #f5f9fe;
+            padding: 0 1rem;
+        }
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0 3rem;
+        }
+
+        /* 字号及间距系统 */
+        h1, h2, h3 { font-weight: 600; line-height: 1.3; }
+        h1 { font-size: 2rem; margin-bottom: 0.75rem; }
+        h2 { font-size: 1.5rem; margin-bottom: 1.25rem; }
+        p { margin-bottom: 1.2rem; }
+        a { color: #0f7b6b; text-decoration: none; font-weight: 500; }
+        a:hover { text-decoration: underline; }
+
+        /* 卡片通用 */
+        .card-grid {
+            display: grid;
+            gap: 1.25rem;
+            margin: 2rem 0 1.5rem;
+        }
+        .card {
+            background: white;
+            border-radius: 1.25rem;
+            padding: 1.5rem 1.25rem;
+            box-shadow: 0 4px 12px rgba(20, 90, 80, 0.06);
+            border: 1px solid rgba(15, 123, 107, 0.08);
+            transition: box-shadow 0.2s ease;
+        }
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(15, 123, 107, 0.1);
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #0f5c4f;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #2a3f44;
+            margin-bottom: 0;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(145deg, #e2f3ef 0%, #d0ece4 100%);
+            border-radius: 2rem;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            color: #0a4f42;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #1b5349;
+        }
+        .hero .tagline {
+            font-weight: 500;
+            color: #0f7b6b;
+            background: rgba(15,123,107,0.07);
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* 优势区 — 卡片网格 */
+        .features-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        /* 说明区 — 双栏 */
+        .explain-block {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0,50,40,0.04);
+            border: 1px solid rgba(15,123,107,0.06);
+        }
+        .explain-text {
+            flex: 1.2;
+            min-width: 240px;
+        }
+        .explain-highlight {
+            flex: 1;
+            min-width: 200px;
+            background: #eef8f5;
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            align-self: flex-start;
+        }
+        .explain-highlight p {
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+        }
+
+        /* FAQ 摘要 —— 紧凑列表 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 1.75rem 2rem;
+            margin: 2rem 0 1.5rem;
+            border: 1px solid #e2efe9;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e2ede8;
+            padding: 1rem 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-q {
+            font-weight: 600;
+            color: #0a4f42;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .faq-q::before {
+            content: "?";
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.4rem;
+            height: 1.4rem;
+            background: #cde9e2;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #0f6b5b;
+            flex-shrink: 0;
+        }
+        .faq-a {
+            font-size: 0.95rem;
+            padding-left: 2rem;
+            color: #2e4b4a;
+        }
+
+        /* 底部链接 */
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem 2.5rem;
+            padding: 2rem 0 1rem;
+            border-top: 1px solid #d4e6df;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+        .footer-links span {
+            color: #4c6b66;
+        }
+
+        /* 响应式细节 */
+        @media (min-width: 600px) {
+            h1 { font-size: 2.6rem; }
+            .hero { padding: 3.5rem 3rem; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .card { padding: 1.25rem; }
+            .faq-summary { padding: 1.25rem; }
+            .explain-block { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- HERO 区：明确用途 -->
+    <section class="hero">
+        <div class="tagline">想快速了解这个平台？</div>
+        <h1>28圈 · 聚合信息与互动</h1>
+        <p>如果你正在寻找一个汇集话题、动态和实用内容的线上空间，<a href="https://28lapss.com">28圈</a>提供简洁的入口。这里没有复杂的流程，适合需要快速浏览、获取信息或参与讨论的使用场景。</p>
+    </section>
+
+    <!-- 优势区：卡片网格，三点概括 -->
+    <section>
+        <h2>为什么可以留意一下</h2>
+        <div class="card-grid features-grid">
+            <div class="card">
+                <h3>🎯 信息直接</h3>
+                <p>页面聚焦内容本身，减少无关干扰。你可以很快判断这个站点是否贴合自己的兴趣或需求。</p>
+            </div>
+            <div class="card">
+                <h3>🔄 动态更新</h3>
+                <p>平台内容保持流动，你能够接触到不同视角的讨论与分享。适合日常浏览或特定主题跟进。</p>
+            </div>
+            <div class="card">
+                <h3>🔗 低门槛访问</h3>
+                <p>无需繁琐注册步骤，从 <a href="https://28lapss.com">28圈</a> 开始即可接触到公开内容。上手直接，节省时间。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 说明区：更详细的使用场景 -->
+    <section>
+        <div class="explain-block">
+            <div class="explain-text">
+                <h2>什么样的人会用到它？</h2>
+                <p>不论你是偶尔浏览资讯、希望发现新鲜话题，还是想找一个相对集中的讨论环境，<strong>28圈</strong> 的设计初衷是降低信息筛选成本。你既可以看到由用户生成的内容流，也能根据兴趣主题进行筛选。</p>
+                <p>和很多同类平台不同，这里更强调内容的可读性与条目清晰程度。没有过分拥挤的界面，也没有强 push 的营销感。如果你对“安静但活跃”的线上社区感兴趣，可以试试它的氛围。</p>
+            </div>
+            <div class="explain-highlight">
+                <p><strong>📌 快速了解平台调性</strong></p>
+                <p>✔ 内容分类简洁</p>
+                <p>✔ 动态流以时间排序</p>
+                <p>✔ 用户互动相对节制</p>
+                <p>✔ 无强制注册即可浏览</p>
+                <p style="margin-top: 0.8rem;">→ 入口：<a href="https://28lapss.com">28圈</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ 摘要：简短问答，帮助用户判断 -->
+    <section class="faq-summary">
+        <h2 style="margin-bottom: 0.5rem;">常见疑问摘要</h2>
+        <div class="faq-item">
+            <div class="faq-q">这个网站是做什么的？</div>
+            <div class="faq-a">它是一个集合了话题讨论与信息展示的站点，内容由用户产生，你可以在上面浏览各类主题的帖子或动态。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">需要立刻注册才能看内容吗？</div>
+            <div class="faq-a">不需要。大部分公开内容可以直接访问。如果你想参与互动，才需要考虑创建账号。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">内容偏向哪些方面？</div>
+            <div class="faq-a">比较多元，涉及生活、兴趣、资讯等多个标签。具体氛围可以自己感受，建议先浏览几个分类再下结论。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">怎么快速开始？</div>
+            <div class="faq-a">直接打开 <a href="https://28lapss.com">28圈</a>，首页即展示最新内容。你可以根据导航或标签切换不同板块。</div>
+        </div>
+    </section>
+
+    <!-- 底部链接 -->
+    <footer class="footer-links">
+        <span>© 2025 · 简洁介绍页</span>
+        <a href="https://28lapss.com">28圈</a>
+        <span>内容仅供了解用途</span>
+    </footer>
+
+</div>
+</body>
+</html>
