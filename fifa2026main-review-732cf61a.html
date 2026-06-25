@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料室里的世界杯 · 2026 索引手记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Sans SC", system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f9f7f4;
+            color: #1e1e1e;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(135deg, #0b1a2b 0%, #1f3a4f 100%);
+            color: #e3e9ef;
+            padding: 4rem 1.8rem 3.2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: -20%;
+            width: 70%;
+            height: 100%;
+            background: radial-gradient(circle at 25% 40%, rgba(255, 200, 90, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+
+        .hero h1 span {
+            font-weight: 600;
+            color: #ffd78c;
+        }
+
+        .hero .subline {
+            font-size: 1.1rem;
+            color: #b8ccda;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            padding-top: 0.75rem;
+            margin-top: 0.25rem;
+            max-width: 36rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 2.4rem 1.8rem 3.8rem;
+        }
+
+        .opening {
+            font-size: 1.2rem;
+            font-weight: 350;
+            padding: 0.6rem 0 1.2rem;
+            border-bottom: 1px solid #e3ddd4;
+            margin-bottom: 2rem;
+            color: #2c3e4e;
+        }
+
+        .opening strong {
+            font-weight: 500;
+            color: #b1622d;
+        }
+
+        .lead {
+            font-size: 1.02rem;
+            margin-bottom: 2rem;
+            color: #3d4a57;
+        }
+
+        .lead a {
+            color: #c06a2b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .lead a:hover {
+            border-bottom-color: #c06a2b;
+        }
+
+        /* 特点卡片列表 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem 2rem;
+            margin: 2.6rem 0 2.2rem;
+            list-style: none;
+        }
+
+        .feature-grid li {
+            background: #ffffff;
+            padding: 1.4rem 1.6rem 1.6rem;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: transform 0.15s ease, box-shadow 0.2s;
+            border: 1px solid #efebe6;
+        }
+
+        .feature-grid li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .feature-grid li strong {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 550;
+            color: #1f3a4f;
+            margin-bottom: 0.35rem;
+            letter-spacing: 0.01em;
+        }
+
+        .feature-grid li p {
+            font-size: 0.95rem;
+            color: #4d5b67;
+            margin: 0;
+        }
+
+        .feature-grid .highlight {
+            background: #f7f3ec;
+            border-color: #dacfc2;
+        }
+
+        /* 温和的结尾/提示块 */
+        .closing-note {
+            background: #edede9;
+            border-radius: 18px;
+            padding: 1.6rem 2rem;
+            margin: 2.8rem 0 1.2rem;
+            font-size: 0.98rem;
+            color: #2f3e4d;
+            border-left: 4px solid #b1622d;
+        }
+
+        .closing-note a {
+            color: #b1622d;
+            text-decoration: none;
+            border-bottom: 1px dashed #b1622d;
+        }
+
+        .closing-note a:hover {
+            border-bottom-style: solid;
+        }
+
+        .faq-mini {
+            margin-top: 2.4rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #ddd6cc;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.8rem;
+            font-size: 0.96rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 550;
+            cursor: pointer;
+            color: #1f3a4f;
+            padding: 0.3rem 0;
+            transition: color 0.1s;
+        }
+
+        .faq-mini summary:hover {
+            color: #b1622d;
+        }
+
+        .faq-mini .answer {
+            padding: 0.5rem 0 0.4rem 1.2rem;
+            color: #465663;
+            border-left: 2px solid #dacfc2;
+            margin-top: 0.2rem;
+        }
+
+        .footer-credit {
+            margin-top: 3.2rem;
+            font-size: 0.85rem;
+            color: #7a8793;
+            border-top: 1px solid #e3ddd4;
+            padding-top: 1.2rem;
+            text-align: center;
+        }
+
+        @media (max-width: 620px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .container {
+                padding: 1.6rem 1.2rem 2.4rem;
+            }
+            .closing-note {
+                padding: 1.2rem 1.4rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero {
+                padding: 3rem 1rem 2.4rem;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 故事开场 -->
+    <header class="hero">
+        <h1><span>📂</span> 资料室·世界杯索引</h1>
+        <div class="subline">剪报、赛历、球队笔记 —— 整理给同样在意的人</div>
+    </header>
+
+    <main class="container">
+
+        <!-- 开场短句 -->
+        <div class="opening">
+            <strong>2026.</strong> 距离下一届世界杯还有一段时间，但资料整理可以早一点开始。
+        </div>
+
+        <!-- 承接段落 + 嵌入链接 (自然嵌入) -->
+        <div class="lead">
+            平时翻看赛事记录、球队更迭和主办城市筹备进展，慢慢攒出了一个文件夹。<br>
+            如果你也喜欢按自己的节奏翻阅信息，可以看看这份关于 <a href="https://fifa2026main.com">世界杯</a> 的整理页——它更像一个索引笔记，没有多余修饰，只把值得留意的线索放在一起。
+        </div>
+
+        <!-- 特点列表 (卡片结构) -->
+        <ul class="feature-grid">
+            <li>
+                <strong>📅 赛历速览</strong>
+                <p>小组赛与淘汰赛阶段大致时间轴、主办城市以及时区提示，方便规划看球节奏。</p>
+            </li>
+            <li class="highlight">
+                <strong>🏟️ 场馆档案</strong>
+                <p>十六座体育场的容量、设计特点与交通备注，来自公开资料的个人摘录。</p>
+            </li>
+            <li>
+                <strong>📋 参赛队列</strong>
+                <p>预选赛各洲出线名额分配，以及截至目前的晋级队伍清单（持续更新）。</p>
+            </li>
+            <li class="highlight">
+                <strong>🔗 索引源</strong>
+                <p>每个条目都附了信息来源或参考链接，方便你自己去核实和延伸阅读。</p>
+            </li>
+        </ul>
+
+        <!-- 温和的承接说明  (场景扩展) -->
+        <div class="closing-note">
+            ⚽ 这个页面不是官方渠道，只是一个普通球迷做的信息索引。<br>
+            如果你想直接看更完整的赛程、分组或官方公告，可以随时去 <a href="https://fifa2026main.com">世界杯</a> 的站点里翻翻看——那边更新更快，内容也更全。
+        </div>
+
+        <!-- FAQ 摘要 (只列两个，自然收尾) -->
+        <div class="faq-mini">
+            <details>
+                <summary>为什么叫「资料索引」而不是攻略？</summary>
+                <div class="answer">因为这里只是把散落的信息归类了一下，没有观赛攻略或购票指南。纯粹是个人整理癖好。</div>
+            </details>
+            <details>
+                <summary>页面里的链接会过时吗？</summary>
+                <div class="answer">部分外部链接可能随着时间调整，建议以官网为准。我也会偶尔更新索引内容。</div>
+            </details>
+        </div>
+
+        <!-- 温和结尾 -->
+        <div class="footer-credit">
+            ✎ 记录于 2025 年春 · 资料卡片持续增补中<br>
+            <span style="font-size:0.8rem; opacity:0.6;">不做预测，不凑热闹，只是好好整理。</span>
+        </div>
+
+    </main>
+
+</body>
+</html>
