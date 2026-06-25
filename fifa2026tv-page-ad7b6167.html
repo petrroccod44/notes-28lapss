@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIFA2026TV · 世界杯知识库</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f6f8fa;
+      color: #1e293b;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* hero 区 (极简目录入口) */
+    .hero {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #0b1622;
+    }
+    .hero .sub {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #475569;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 0.25rem;
+    }
+    .hero .sub span {
+      background: #e9edf2;
+      padding: 0.15rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #1e293b;
+    }
+
+    /* 说明区 – 卡片风格 */
+    .intro-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.8rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.04);
+      margin-bottom: 2rem;
+    }
+    .intro-card h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      border-left: 4px solid #2563eb;
+      padding-left: 0.75rem;
+    }
+    .intro-card p {
+      margin-bottom: 1rem;
+      color: #1e293b;
+    }
+    .intro-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 目录感网格 (知识库入口) */
+    .index-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 2rem 0 2.5rem;
+    }
+    .index-item {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.25rem 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      border: 1px solid #eef2f6;
+      transition: border 0.15s;
+    }
+    .index-item:hover {
+      border-color: #b9c9dd;
+    }
+    .index-item .title {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      color: #0b1622;
+    }
+    .index-item .desc {
+      font-size: 0.85rem;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    /* 提示区 + 相关信息 */
+    .info-blocks {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .info-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.5rem 1.8rem;
+      border: 1px solid #e9edf2;
+    }
+    .info-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #0b1622;
+    }
+    .info-card p, .info-card li {
+      font-size: 0.95rem;
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+    }
+    .info-card ul {
+      padding-left: 1.2rem;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      background: #f1f5f9;
+      border-radius: 18px;
+      padding: 1.5rem 1.8rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .faq-mini h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.85rem;
+      color: #0b1622;
+    }
+    .faq-mini dt {
+      font-weight: 500;
+      margin-top: 0.8rem;
+      color: #1e293b;
+    }
+    .faq-mini dd {
+      margin-left: 0;
+      font-size: 0.9rem;
+      color: #475569;
+      border-left: 2px solid #b9c9dd;
+      padding-left: 0.75rem;
+    }
+
+    /* 页脚 & 链接 */
+    .footer-note {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2e8f0;
+      font-size: 0.85rem;
+      color: #64748b;
+      text-align: center;
+    }
+    a {
+      color: #1e4f8a;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border 0.1s;
+    }
+    a:hover {
+      border-bottom-color: #1e4f8a;
+    }
+
+    /* 响应式 */
+    @media (max-width: 500px) {
+      .intro-card {
+        padding: 1.3rem;
+      }
+      .index-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .info-card {
+        padding: 1.2rem 1.3rem;
+      }
+      .faq-mini {
+        padding: 1.2rem 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero 目录入口感 -->
+  <div class="hero">
+    <h1>FIFA2026TV 知识库</h1>
+    <div class="sub">
+      <span>世界杯</span>
+      <span>赛事索引</span>
+      <span>观赛参考</span>
+      <span>公开信息整理</span>
+    </div>
+  </div>
+
+  <!-- 站点介绍与可信说明 -->
+  <div class="intro-card">
+    <h2>关于本库</h2>
+    <p>FIFA2026TV 是一个围绕<a href="https://fifa2026tv.com">世界杯</a>赛事信息整理的轻量知识入口。站点聚合公开的赛程、队伍背景、场馆资料与相关媒体报道，帮助球迷快速定位权威信息，不提供直播流或侵权行为。</p>
+    <p>内容来源包括国际足联官方公告、主流体育媒体及公开数据，站点本身不持有任何比赛版权，仅作索引与介绍，力求客观中立。使用前建议交叉核对官方赛历。</p>
+  </div>
+
+  <!-- 目录感布局：四个知识块入口 -->
+  <div class="index-grid">
+    <div class="index-item">
+      <div class="title">🏟️ 赛程与场馆</div>
+      <div class="desc">2034 年世界杯主办国已定，2026 年北美三国的场馆分布、容量与举办城市信息。</div>
+    </div>
+    <div class="index-item">
+      <div class="title">🏆 历届冠军</div>
+      <div class="desc">自 1930 年起的世界杯夺冠记录，历届决赛对阵、比分及最佳球员列表。</div>
+    </div>
+    <div class="index-item">
+      <div class="title">📋 参赛队伍</div>
+      <div class="desc">48 强晋级路径、各洲名额分配以及已确定的预选赛出线球队概况。</div>
+    </div>
+    <div class="index-item">
+      <div class="title">📰 赛事新闻</div>
+      <div class="desc">聚合重要转会、国家队名单变化、裁判任命及规则更新等实时资讯。</div>
+    </div>
+  </div>
+
+  <!-- 说明区 + 提示区 合并成两个信息卡片 -->
+  <div class="info-blocks">
+    <div class="info-card">
+      <h3>📌 使用提示</h3>
+      <ul>
+        <li>赛程时间均为当地时区，建议通过 FIFA 官方渠道再次确认。</li>
+        <li>部分历史统计数据截至最近一届赛事，更新可能存在延迟。</li>
+        <li>本站不嵌入任何流媒体播放器，外部链接指向均为公开来源。</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>📎 相关信息</h3>
+      <p>2026 年世界杯将由美国、加拿大、墨西哥联合举办，共 48 支队伍参赛，总计 104 场比赛。这是首次由三个国家联合承办的世界杯，也是扩军至 48 队后的第一届。</p>
+      <p>决赛将于 2026 年 7 月 19 日在新泽西州的大都会人寿体育场举行。本站会持续维护赛程对照表与队伍简介。</p>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要区 (简短) -->
+  <div class="faq-mini">
+    <h3>常见摘要</h3>
+    <dl>
+      <dt>FIFA2026TV 是官方站点吗？</dt>
+      <dd>不是。这是一个由球迷维护的信息索引站，数据源均来自公开可查的官方或权威媒体，不代行官方职能。</dd>
+      <dt>如何确认赛程准确性？</dt>
+      <dd>建议优先参考 FIFA 官网或赛事主办方发布的赛历，本站作为辅助参考。</dd>
+      <dt>站点会更新到 2026 年之后吗？</dt>
+      <dd>视维护情况而定，目前以 2026 年世界杯为核心内容，之后可能扩展至其他赛事。</dd>
+    </dl>
+  </div>
+
+  <!-- 再次自然嵌入链接（句子中） -->
+  <p style="font-size:0.9rem; color:#475569; margin-top:0.5rem;">
+    对 <a href="https://fifa2026tv.com">世界杯</a> 赛程、历史或球队感兴趣的用户，可在此站找到结构化的导航与摘要。
+  </p>
+
+  <div class="footer-note">
+    FIFA2026TV · 信息仅供参考 · 版本 2403
+  </div>
+</div>
+</body>
+</html>
